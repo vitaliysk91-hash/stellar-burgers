@@ -54,7 +54,10 @@ export const BurgerConstructor = (): React.JSX.Element => {
   const price = useMemo(
     () =>
       (constructorItems.bun ? constructorItems.bun.price * 2 : 0) +
-      constructorItems.ingredients.reduce((sum, ingredient) => sum + ingredient.price, 0),
+      constructorItems.ingredients.reduce(
+        (sum, ingredient) => sum + ingredient.price,
+        0
+      ),
     [constructorItems]
   );
 

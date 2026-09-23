@@ -1,15 +1,13 @@
-import {
-  checkUserAuth,
-  loginUser,
-  updateUser,
-  userReducer,
-} from '@slices/userSlice';
+import { checkUserAuth, loginUser, updateUser, userReducer } from '@slices/userSlice';
 
 const user = { name: 'Виталий', email: 'vitalii@example.com' };
 
 describe('userSlice', () => {
   it('finishes auth check for an anonymous user', () => {
-    const state = userReducer(undefined, checkUserAuth.fulfilled(null, 'request', undefined));
+    const state = userReducer(
+      undefined,
+      checkUserAuth.fulfilled(null, 'request', undefined)
+    );
     expect(state.isAuthChecked).toBe(true);
     expect(state.user).toBeNull();
   });

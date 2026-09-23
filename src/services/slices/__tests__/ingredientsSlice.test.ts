@@ -1,7 +1,4 @@
-import {
-  fetchIngredients,
-  ingredientsReducer,
-} from '@slices/ingredientsSlice';
+import { fetchIngredients, ingredientsReducer } from '@slices/ingredientsSlice';
 
 import type { TIngredient } from '@utils-types';
 
@@ -21,7 +18,10 @@ const ingredient: TIngredient = {
 
 describe('ingredientsSlice', () => {
   it('sets loading on pending', () => {
-    const state = ingredientsReducer(undefined, fetchIngredients.pending('request', undefined));
+    const state = ingredientsReducer(
+      undefined,
+      fetchIngredients.pending('request', undefined)
+    );
     expect(state.isLoading).toBe(true);
     expect(state.error).toBeNull();
   });
