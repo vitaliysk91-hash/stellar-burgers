@@ -27,6 +27,12 @@ const filling: TIngredient = { ...bun, _id: 'main-1', name: 'Начинка', ty
 const sauce: TIngredient = { ...bun, _id: 'sauce-1', name: 'Соус', type: 'sauce' };
 
 describe('constructorSlice', () => {
+  it('returns the initial state for an unknown action', () => {
+    const state = constructorReducer(undefined, { type: 'UNKNOWN' });
+
+    expect(state).toEqual({ bun: null, ingredients: [] });
+  });
+
   it('replaces the selected bun', () => {
     let state = constructorReducer(undefined, addIngredient(bun));
     state = constructorReducer(state, addIngredient(secondBun));
@@ -44,7 +50,7 @@ describe('constructorSlice', () => {
 
     const firstId = state.ingredients[0]?.id;
     expect(firstId).toBeDefined();
-    state = constructorReducer(state, removeIngredient(firstId as string));
+    state = constructorReducer(state, removeIngredient(firstId));
 
     expect(state.ingredients).toHaveLength(1);
   });
