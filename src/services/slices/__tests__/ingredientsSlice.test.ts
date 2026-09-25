@@ -17,6 +17,16 @@ const ingredient: TIngredient = {
 };
 
 describe('ingredientsSlice', () => {
+  it('returns the initial state for an unknown action', () => {
+    const state = ingredientsReducer(undefined, { type: 'UNKNOWN' });
+
+    expect(state).toEqual({
+      ingredients: [],
+      isLoading: true,
+      error: null,
+    });
+  });
+
   it('sets loading on pending', () => {
     const state = ingredientsReducer(
       undefined,
